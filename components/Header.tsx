@@ -86,17 +86,16 @@ export const Header: React.FC<HeaderProps> = ({ onCartClick, navigateTo, onSearc
       <div className="bg-primary text-white text-sm text-center py-2 px-4 font-medium">
         Frete grátis para compras acima de R$299 | Fale conosco no WhatsApp!
       </div>
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-            <div className="w-1/3 lg:hidden">
-                <AnimatedMenuIcon isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
-            </div>
-            <div className="w-1/3 flex justify-center lg:justify-start">
-                 <h1 className="text-3xl font-playfair font-bold text-text-dark cursor-pointer" onClick={() => navigateTo('home')}>Sou Felina</h1>
-            </div>
+      <nav className="container mx-auto px-6 h-24 flex items-center">
 
-            <div className="hidden lg:flex lg:w-auto lg:items-center lg:justify-center">
-                <ul className="flex items-center space-x-10">
+        {/* --- DESKTOP LAYOUT --- */}
+        <div className="hidden lg:flex items-center justify-between w-full">
+            <div className="flex-1 flex justify-start">
+                <img src="https://i.imgur.com/szUW3NL.png" alt="Sou Felina Logo" className="h-16 cursor-pointer" onClick={() => navigateTo('home')} />
+            </div>
+            
+            <div className="flex-1 flex justify-center">
+                 <ul className="flex items-center space-x-10">
                     {navLinks.map(link => (
                         <li key={link.name}>
                             <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick(link.page);}} className="text-text-dark hover:text-primary transition-colors duration-300 font-semibold tracking-wider">{link.name}</a>
@@ -105,7 +104,33 @@ export const Header: React.FC<HeaderProps> = ({ onCartClick, navigateTo, onSearc
                 </ul>
             </div>
           
-            <div className="w-1/3 flex items-center justify-end space-x-3 sm:space-x-4">
+            <div className="flex-1 flex items-center justify-end space-x-3 sm:space-x-4">
+                <button onClick={onSearchClick} className="text-text-dark hover:text-primary transition-colors duration-300" title="Buscar"><SearchIcon /></button>
+                <button onClick={() => navigateTo('favorites')} className="relative text-text-dark hover:text-primary transition-colors duration-300" title="Favoritos">
+                    <HeartIcon />
+                    {favoritesCount > 0 && <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">{favoritesCount}</span>}
+                </button>
+                <button onClick={onUserClick} className="text-text-dark hover:text-primary transition-colors duration-300" title={userIsAuthenticated ? "Sair" : "Entrar"}>
+                    <UserIcon isLoggedIn={userIsAuthenticated} />
+                </button>
+                <button onClick={onCartClick} className="relative text-text-dark hover:text-primary transition-colors duration-300" title="Carrinho">
+                    <CartIcon />
+                    {cartItemCount > 0 && <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">{cartItemCount}</span>}
+                </button>
+            </div>
+        </div>
+
+        {/* --- MOBILE LAYOUT --- */}
+        <div className="lg:hidden flex items-center justify-between w-full">
+            <div className="flex-1 flex justify-start">
+                <AnimatedMenuIcon isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
+            </div>
+
+            <div className="flex-none -ml-16">
+                 <img src="https://i.imgur.com/szUW3NL.png" alt="Sou Felina Logo" className="h-12 cursor-pointer" onClick={() => navigateTo('home')} />
+            </div>
+          
+            <div className="flex-1 flex items-center justify-end space-x-3 sm:space-x-4">
                 <button onClick={onSearchClick} className="text-text-dark hover:text-primary transition-colors duration-300" title="Buscar"><SearchIcon /></button>
                 <button onClick={() => navigateTo('favorites')} className="relative text-text-dark hover:text-primary transition-colors duration-300" title="Favoritos">
                     <HeartIcon />
@@ -133,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({ onCartClick, navigateTo, onSearc
           {/* Panel */}
           <div className={`relative w-full max-w-sm h-full bg-secondary shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
               <div className="flex justify-between items-center p-6 border-b border-gray-200">
-                   <h1 className="text-2xl font-playfair font-bold text-text-dark cursor-pointer" onClick={() => handleNavClick('home')}>Sou Felina</h1>
+                   <img src="https://i.imgur.com/szUW3NL.png" alt="Sou Felina Logo" className="h-12 cursor-pointer" onClick={() => handleNavClick('home')} />
               </div>
               <nav className="flex-grow p-6">
                 <ul className="flex flex-col space-y-2">

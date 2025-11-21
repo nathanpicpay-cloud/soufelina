@@ -1,36 +1,139 @@
 import type { Product, Collection, InstagramPost, Coupon } from './types';
 
-const defaultDescription = "Descubra a peça perfeita que combina elegância e conforto. Feita com tecidos de alta qualidade, esta peça oferece um caimento impecável e um toque suave na pele. Ideal para compor looks sofisticados e modernos, seja para o dia a dia ou para ocasiões especiais. Renove seu guarda-roupa com o estilo único da Sou Felina.";
+const defaultDescription = "Desenvolvido para oferecer máxima performance e estilo nos seus treinos. Com tecido tecnológico de alta compressão e respirabilidade, esta peça se ajusta perfeitamente ao corpo, garantindo liberdade de movimento e conforto. Ideal para musculação, yoga, corrida ou uso casual.";
+
+// Helper para garantir URLs consistentes e evitar bugs visuais
+const getProductImage = (id: string) => `https://images.unsplash.com/${id}?w=500&h=650&fit=crop&q=80`;
+const getCollectionImage = (id: string) => `https://images.unsplash.com/${id}?w=600&h=800&fit=crop&q=80`;
+const getInstaImage = (id: string) => `https://images.unsplash.com/${id}?w=500&h=500&fit=crop&q=80`;
 
 export const initialProducts: Product[] = [
-  { id: 11, name: 'Vestido Longo Rosa de Verão', price: 289.90, imageUrl: 'https://storage.googleapis.com/aistudio-hosting/2024-8-1/8d60c497-6a6d-4952-b91b-9f931d8e69ac.webp', sizes: ['P', 'M', 'G'], rating: 5, category: 'vestido', description: defaultDescription },
-  { id: 1, name: 'Vestido Midi Rosa com Laço', price: 299.90, imageUrl: 'https://storage.googleapis.com/aistudio-hosting/2024-8-1/8d60c497-6a6d-4952-b91b-9f931d8e69ac.webp', sizes: ['P', 'M', 'G'], category: 'vestido', description: defaultDescription },
-  { id: 2, name: 'Blusa de Seda Nude', price: 189.90, imageUrl: 'https://images.unsplash.com/photo-1581044777550-4cfa6ce7782a?w=400&h=500&fit=crop&q=80', sizes: ['P', 'M', 'G'], category: 'blusa', description: defaultDescription },
-  { id: 3, name: 'Saia Plissada Rosé', price: 220.50, imageUrl: 'https://images.unsplash.com/photo-1594618335989-b15b3c54c03a?w=400&h=500&fit=crop&q=80', sizes: ['P', 'M'], category: 'saia', description: defaultDescription },
-  { id: 4, name: 'Conjunto de Linho Bege', price: 350.00, imageUrl: 'https://images.unsplash.com/photo-1617137968427-4dd474f33979?w=400&h=500&fit=crop&q=80', sizes: ['P', 'M', 'G'], category: 'conjunto', description: defaultDescription },
-  { id: 5, name: 'Macacão Pantalona', price: 320.00, imageUrl: 'https://images.unsplash.com/photo-1596756239103-3158f0f0443c?w=400&h=500&fit=crop&q=80', sizes: ['M', 'G'], category: 'macacao', description: defaultDescription },
-  { id: 6, name: 'Vestido Curto de Festa', price: 199.90, oldPrice: 289.90, imageUrl: 'https://images.unsplash.com/photo-1590334860467-33291079e0ab?w=400&h=500&fit=crop&q=80', sizes: ['P', 'M'], rating: 5, category: 'vestido', description: defaultDescription },
-  { id: 7, name: 'Calça Alfaiataria Branca', price: 150.00, oldPrice: 250.00, imageUrl: 'https://images.unsplash.com/photo-1551803091-e25622d22262?w=400&h=500&fit=crop&q=80', sizes: ['P', 'M', 'G'], rating: 4, category: 'calca', description: defaultDescription },
-  { id: 8, name: 'Blazer Alongado Preto', price: 280.00, oldPrice: 399.90, imageUrl: 'https://images.unsplash.com/photo-1572113462002-3e521feb08a7?w=400&h=500&fit=crop&q=80', sizes: ['G'], rating: 5, category: 'blazer', description: defaultDescription },
-  { id: 9, name: 'Body de Renda', price: 99.90, oldPrice: 159.90, imageUrl: 'https://images.unsplash.com/photo-1614441595189-e887a71a0a5e?w=400&h=500&fit=crop&q=80', sizes: ['P', 'M'], rating: 4, category: 'body', description: defaultDescription },
-  { id: 10, name: 'Jaqueta Jeans Clássica', price: 180.00, oldPrice: 260.00, imageUrl: 'https://images.unsplash.com/photo-1543087904-7431e5adaea6?w=400&h=500&fit=crop&q=80', sizes: ['P', 'M', 'G'], rating: 5, category: 'jaqueta', description: defaultDescription },
+  { 
+    id: 1, 
+    name: 'Conjunto Energy Rosa', 
+    price: 249.90, 
+    imageUrl: getProductImage('photo-1518310383802-640c2de311b2'), // Mulher fitness correndo/treinando
+    sizes: ['P', 'M', 'G'], 
+    rating: 5, 
+    category: 'conjunto', 
+    description: defaultDescription 
+  },
+  { 
+    id: 2, 
+    name: 'Legging Alta Performance', 
+    price: 129.90, 
+    imageUrl: getProductImage('photo-1506619216599-9d16d0903dfd'), // Yoga/Legging
+    sizes: ['P', 'M', 'G', 'GG'], 
+    category: 'legging', 
+    description: defaultDescription 
+  },
+  { 
+    id: 3, 
+    name: 'Top Suporte Max Azul', 
+    price: 89.90, 
+    imageUrl: getProductImage('photo-1620799140408-ed5341cd2431'), // Top esportivo
+    sizes: ['P', 'M', 'G'], 
+    category: 'top', 
+    description: defaultDescription 
+  },
+  { 
+    id: 4, 
+    name: 'Short Corrida Leve', 
+    price: 79.90, 
+    imageUrl: getProductImage('photo-1534438327276-14e5300c3a48'), // Academia/Short
+    sizes: ['P', 'M', 'G'], 
+    category: 'short', 
+    description: defaultDescription 
+  },
+  { 
+    id: 5, 
+    name: 'Macacão Fitness Costas Nua', 
+    price: 289.90, 
+    imageUrl: getProductImage('photo-1605296867304-46d5465a13f1'), // Mulher treinando
+    sizes: ['M', 'G'], 
+    category: 'macacao', 
+    description: defaultDescription 
+  },
+  { 
+    id: 6, 
+    name: 'Camiseta Dry Fit Branca', 
+    price: 69.90, 
+    oldPrice: 99.90, 
+    imageUrl: getProductImage('photo-1518459031867-a89b944bffe4'), // Mulher correndo
+    sizes: ['P', 'M', 'G'], 
+    rating: 5, 
+    category: 'camiseta', 
+    description: defaultDescription 
+  },
+  { 
+    id: 7, 
+    name: 'Jaqueta Corta Vento Neon', 
+    price: 199.90, 
+    oldPrice: 259.90, 
+    imageUrl: getProductImage('photo-1552374196-1ab2a1c593e8'), // Roupa fitness urbana
+    sizes: ['P', 'M', 'G'], 
+    rating: 4, 
+    category: 'jaqueta', 
+    description: defaultDescription 
+  },
+  { 
+    id: 8, 
+    name: 'Top Cropped Manga Longa', 
+    price: 119.90, 
+    imageUrl: getProductImage('photo-1571731956672-f2b94d7dd0cb'), // Yoga pose
+    sizes: ['P', 'M', 'G'], 
+    rating: 5, 
+    category: 'top', 
+    description: defaultDescription 
+  },
+  { 
+    id: 9, 
+    name: 'Legging Estampada Abstrata', 
+    price: 149.90, 
+    oldPrice: 189.90, 
+    imageUrl: getProductImage('photo-1545167622-3a6ac756afa4'), // Detalhe legging
+    sizes: ['P', 'M'], 
+    rating: 4, 
+    category: 'legging', 
+    description: defaultDescription 
+  },
+  { 
+    id: 10, 
+    name: 'Kit Faixas Elásticas', 
+    price: 49.90, 
+    imageUrl: getProductImage('photo-1598971861713-54ad16a7e72e'), // Acessórios academia
+    sizes: ['U'], 
+    rating: 5, 
+    category: 'acessorios', 
+    description: defaultDescription 
+  },
+  { 
+    id: 11, 
+    name: 'Conjunto Yoga Zen', 
+    price: 229.90, 
+    imageUrl: getProductImage('photo-1599058945522-28d584b6f0ff'), // Yoga pose
+    sizes: ['P', 'M', 'G'], 
+    rating: 5, 
+    category: 'conjunto', 
+    description: defaultDescription 
+  },
 ];
 
 export const initialCollections: Collection[] = [
-  { id: 1, name: 'Blusas', imageUrl: 'https://images.unsplash.com/photo-1485230895905-ec40ba36b939?w=600&h=800&fit=crop&q=80' },
-  { id: 2, name: 'Vestidos', imageUrl: 'https://images.unsplash.com/photo-1595965785399-2778385f0610?w=600&h=800&fit=crop&q=80' },
-  { id: 3, name: 'Conjuntos', imageUrl: 'https://images.unsplash.com/photo-1627850993952-f4142c12579b?w=600&h=800&fit=crop&q=80' },
+  { id: 1, name: 'Treino de Força', imageUrl: getCollectionImage('photo-1583454110551-21f2fa2afe61') },
+  { id: 2, name: 'Yoga & Pilates', imageUrl: getCollectionImage('photo-1544367563-12123d8965cd') },
+  { id: 3, name: 'Cardio & Corrida', imageUrl: getCollectionImage('photo-1486218119243-1388350add37') },
 ];
 
 export const initialInstagramPosts: InstagramPost[] = [
-  { id: 1, imageUrl: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f3?w=500&h=500&fit=crop&q=80' },
-  { id: 2, imageUrl: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500&h=500&fit=crop&q=80' },
-  { id: 3, imageUrl: 'https://images.unsplash.com/photo-1581044777550-4cfa6ce7782a?w=500&h=500&fit=crop&q=80' },
-  { id: 4, imageUrl: 'https://images.unsplash.com/photo-1611042553365-96c81f725a3a?w=500&h=500&fit=crop&q=80' },
-  { id: 5, imageUrl: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&h=500&fit=crop&q=80' },
-  { id: 6, imageUrl: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=500&h=500&fit=crop&q=80' },
-  { id: 7, imageUrl: 'https://images.unsplash.com/photo-160321769163-255829658254?w=500&h=500&fit=crop&q=80'},
-  { id: 8, imageUrl: 'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=500&h=500&fit=crop&q=80'},
+  { id: 1, imageUrl: getInstaImage('photo-1571019613454-1cb2f99b2d8b') }, // Abs
+  { id: 2, imageUrl: getInstaImage('photo-1517836357463-d25dfeac3438') }, // Gym vibe
+  { id: 3, imageUrl: getInstaImage('photo-1574680096145-d05b474e2155') }, // Fitness
+  { id: 4, imageUrl: getInstaImage('photo-1552196563-55cd4e45efb3') }, // Yoga
+  { id: 5, imageUrl: getInstaImage('photo-1434682881908-b43d0467b798') }, // Running
+  { id: 6, imageUrl: getInstaImage('photo-1609605988071-0d1cfd25044e') }, // Stretching
+  { id: 7, imageUrl: getInstaImage('photo-1599058945522-28d584b6f0ff') }, // Yoga
+  { id: 8, imageUrl: getInstaImage('photo-1583454110551-21f2fa2afe61') }, // Weights
 ];
 
 export const initialCoupons: Coupon[] = [
@@ -44,25 +147,25 @@ export const initialCoupons: Coupon[] = [
   },
   {
     id: 2,
-    code: 'INVERNO24',
-    discountPercentage: 10,
+    code: 'FITNESS24',
+    discountPercentage: 15,
     status: 'active',
     createdAt: '2024-07-01T00:00:00.000Z',
     expiresAt: '2024-08-31T23:59:59.000Z',
   },
   {
     id: 3,
-    code: 'EXPIRADO',
-    discountPercentage: 10,
-    status: 'active',
+    code: 'VERAO20',
+    discountPercentage: 20,
+    status: 'inactive',
     createdAt: '2023-01-01T00:00:00.000Z',
     expiresAt: '2023-01-31T23:59:59.000Z',
   },
   {
     id: 4,
-    code: 'INATIVO',
+    code: 'TREINO10',
     discountPercentage: 10,
-    status: 'inactive',
+    status: 'active',
     createdAt: '2024-01-01T00:00:00.000Z',
     expiresAt: null,
   }

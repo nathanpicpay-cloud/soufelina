@@ -8,17 +8,16 @@ interface ProductModalProps {
   product: Product | null;
 }
 
-const ALL_SIZES = ['P', 'M', 'G'];
+const ALL_SIZES = ['P', 'M', 'G', 'GG', 'U'];
 const ALL_CATEGORIES: { key: Product['category']; name: string }[] = [
-    { key: 'vestido', name: 'Vestido' },
-    { key: 'blusa', name: 'Blusa' },
-    { key: 'saia', name: 'Saia' },
+    { key: 'legging', name: 'Legging' },
+    { key: 'top', name: 'Top' },
+    { key: 'short', name: 'Short' },
     { key: 'conjunto', name: 'Conjunto' },
     { key: 'macacao', name: 'Macacão' },
-    { key: 'calca', name: 'Calça' },
-    { key: 'blazer', name: 'Blazer' },
-    { key: 'body', name: 'Body' },
+    { key: 'camiseta', name: 'Camiseta' },
     { key: 'jaqueta', name: 'Jaqueta' },
+    { key: 'acessorios', name: 'Acessórios' },
 ];
 
 const initialFormState: Omit<Product, 'id'> = {
@@ -27,7 +26,7 @@ const initialFormState: Omit<Product, 'id'> = {
   oldPrice: undefined,
   imageUrl: '',
   sizes: [],
-  category: 'vestido',
+  category: 'legging',
   description: '',
   rating: undefined,
 };

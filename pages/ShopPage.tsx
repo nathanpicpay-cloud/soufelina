@@ -8,17 +8,16 @@ interface ShopPageProps {
   allProducts: Product[];
 }
 
-const ALL_SIZES = ['P', 'M', 'G'];
+const ALL_SIZES = ['P', 'M', 'G', 'GG', 'U'];
 const ALL_CATEGORIES: { key: Product['category']; name: string }[] = [
-    { key: 'vestido', name: 'Vestidos' },
-    { key: 'blusa', name: 'Blusas' },
-    { key: 'saia', name: 'Saias' },
+    { key: 'legging', name: 'Leggings' },
+    { key: 'top', name: 'Tops' },
+    { key: 'short', name: 'Shorts' },
     { key: 'conjunto', name: 'Conjuntos' },
     { key: 'macacao', name: 'Macacões' },
-    { key: 'calca', name: 'Calças' },
-    { key: 'blazer', name: 'Blazers' },
-    { key: 'body', name: 'Bodys' },
+    { key: 'camiseta', name: 'Camisetas' },
     { key: 'jaqueta', name: 'Jaquetas' },
+    { key: 'acessorios', name: 'Acessórios' },
 ];
 
 const FilterIcon: React.FC = () => (
@@ -89,8 +88,8 @@ export const ShopPage: React.FC<ShopPageProps> = ({ allProducts }) => {
   return (
     <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-12">
-            <h1 className="text-5xl md:text-6xl font-playfair font-bold text-text-dark">Selva</h1>
-            <p className="text-lg mt-3 text-text-dark/80">Descubra a beleza selvagem em cada peça.</p>
+            <h1 className="text-5xl md:text-6xl font-playfair font-bold text-text-dark">Loja Fitness</h1>
+            <p className="text-lg mt-3 text-text-dark/80">Descubra a performance e estilo em cada peça.</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12">

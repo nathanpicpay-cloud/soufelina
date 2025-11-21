@@ -8,7 +8,7 @@ export interface Product {
   imageUrl: string;
   sizes: string[];
   rating?: number;
-  category: 'vestido' | 'blusa' | 'saia' | 'conjunto' | 'macacao' | 'calca' | 'blazer' | 'body' | 'jaqueta';
+  category: 'legging' | 'top' | 'short' | 'conjunto' | 'macacao' | 'camiseta' | 'jaqueta' | 'acessorios';
   description: string;
 }
 
